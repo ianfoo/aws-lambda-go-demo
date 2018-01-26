@@ -63,7 +63,7 @@ func Handler(r events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, e
 	if err != nil {
 		return badRequest(err.Error())
 	}
-	resp, err := genResponsePayload(t, req.Location)
+	resp, err := genResponsePayload(t, req.Format)
 	if err != nil {
 		return events.APIGatewayProxyResponse{}, err
 	}
@@ -98,5 +98,5 @@ func badRequest(logmsg string) (events.APIGatewayProxyResponse, error) {
 	return events.APIGatewayProxyResponse{
 		Body:       http.StatusText(http.StatusBadRequest),
 		StatusCode: http.StatusBadRequest,
-	}, ErrBadRequest
+	}, nil
 }
