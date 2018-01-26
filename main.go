@@ -32,8 +32,8 @@ type Request struct {
 const defaultFormat = time.UnixDate
 
 type Response struct {
-	Location string
-	Time     string
+	Location string `json:"location"`
+	Time     string `json:"time"`
 }
 
 // All main needs to do is tell AWS Lambda what function will handle requests.
